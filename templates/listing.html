@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>{{ template_people | title }}</h1>
+    
+    {% if template_char_type %}
+      <p>{{ template_char_type }}</p>
+    {%else%}
+      <p>A {{ template_people }} people.</p>
+    {% endif %}
+
+    {% if template_job %}
+      <p>{{ template_job }}</p>
+    {%else%}
+      <p>A {{ template_people }} people.</p>
+    {% endif %}
+    
+    <h3>Factions - {{ template_faction | length}}</h3>
+    <ul>
+    {% for faction in template_faction %}
+        <li>{{ faction }}</li>
+    {% endfor %}
+    </ul>
+
+    <h3>Inventory</h3>
+    <ul>
+    {% for key, inventory in template_inventory|dictsort %}
+        <li>{{ inventory }}</li>
+    {% endfor %}
+    </ul>
+{% endblock %}
